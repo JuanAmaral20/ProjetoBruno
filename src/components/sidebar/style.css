@@ -1,0 +1,35 @@
+.sidebar {
+  background-color: #032886;
+  padding: 16px 24px;
+  color: white;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebarNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+}
+
+.sidebarNav:hover {
+  background-color: green;
+}
+
+.sidebarSelected {
+  background-color: green;
+}
