@@ -20,6 +20,7 @@ export const UsuariosAdmin = () => {
     emailRef.current.value = "";
     senhaRef.current.value = "";
   }
+
   function abrirModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "flex";

@@ -34,6 +34,7 @@ export const UserTable = () => {
     event.preventDefault();
 
     const updatedUser = {
+      ...userSelected,
       nome, // Manter os dados existentes
     };
 
@@ -44,7 +45,6 @@ export const UserTable = () => {
     setUsers(newUsers);
 
     setUserSelected(null);
-    setNome("null");
     setIsOpen(false);
   }
 
@@ -56,7 +56,8 @@ export const UserTable = () => {
   return (
     <>
       {isOpen && userSelected && (
-        <div id="teste-modal" className="modal-geral">
+        <div id="teste-modal">
+          <div onClick={fecharModal} className="container-fechar-modal" />
           <div className="modal">
             <div className="title">
               <p>Editar Usuário</p>

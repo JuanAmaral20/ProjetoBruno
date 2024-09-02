@@ -42,14 +42,20 @@
   font-family: "Roboto", sans-serif;
 }
 
-.teste-modal {
+#teste-modal {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+  inset: 0;
   z-index: 5;
   justify-content: center;
-  background-color: white;
   padding: 20px;
-  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras mais sutis e elegantes */
+}
+
+.container-fechar-modal {
+  background-color: rgba(0, 0, 0, 0.288);
+  position: absolute;
+  inset: 0;
 }
