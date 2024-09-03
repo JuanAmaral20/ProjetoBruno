@@ -50,11 +50,7 @@ th {
 
 caption {
   font-size: 25px;
-  margin-top: 10px;
-}
+  margin-top: 40px;
 
-.divisao-tabelas {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  text-align: start;
 }

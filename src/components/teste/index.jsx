@@ -1,12 +1,15 @@
 import { ContainerAdminPage } from "../container-admin-page";
 import { ShoppingBasket, Trash2, UserPen } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./style.css";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
+import { ModalProduto } from "../modal-produtos";
 
 export const Teste = () => {
   const { products, setProducts } = useContext(UserContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [productSelected, setProductSelected] = useState(null);
   const nomeProdRef = useRef(null);
   const descricaoRef = useRef(null);
   const precoRef = useRef(null);
@@ -44,7 +47,7 @@ export const Teste = () => {
       return element.nomeProduto === nomeProduto;
     });
 
-    if (isUserExists) {
+    if (isProductsExists) {
       limparInputs();
       return alert("Email já cadastrado!");
     }
@@ -65,13 +68,26 @@ export const Teste = () => {
     limparInputs();
     fecharModal();
   }
+
+  function handleProductSelectedClick(product) {
+    setProductSelected(product);
+    setIsOpen(true);
+  }
+
+  function deleteProduct(id) {
+    setProducts((state) => state.filter((product) => product.id !== id));
+  }
+  function fecharModalUpdate() {
+    setIsOpen(false);
+    setProductSelected(null);
+  }
   return (
     <ContainerAdminPage>
       <h1 className="title">Sistema de administração - Usuários</h1>
       <div className="info-geral-prod">
         <button className="info" onClick={abrirModal}>
           <ShoppingBasket className="tamanho-padrao" />
-          <p className="tamanho-info">Cadastrar Usuários</p>
+          <p className="tamanho-info">Cadastrar Produto</p>
         </button>
         <h1>Tabela de Produtos</h1>
       </div>
@@ -82,32 +98,38 @@ export const Teste = () => {
             <th>Descrição</th>
             <th>Preço (R$)</th>
             <th>Porcentagem de Desconto (%)</th>
+            <th>Preço com deconto</th>
             <th>Data de Vencimento</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Produto A</td>
-            <td>Descrição do Produto A</td>
-            <td>100,00</td>
-            <td>10</td>
-            <td>2024-09-30</td>
-            <td>
-              <div className="acoes">
-                <UserPen
-                  className="edit"
-                  onClick={() => {
-                    handleUserSelectedClick(user);
-                  }}
-                />
-                <Trash2
-                  className="delete"
-                  onClick={() => deleteUser(user.id)}
-                />
-              </div>
-            </td>
-          </tr>
+          {products.map((product, index) => (
+            <tr key={index}>
+              <td>{product.nomeProduto}</td>
+              <td>{product.descricao}</td>
+              <td>{product.preco}</td>
+              <td>{product.desconto}</td>
+              <td>
+                {product.preco - product.preco * (product.desconto / 100)}
+              </td>
+              <td>{product.vencimento}</td>
+              <td>
+                <div className="acoes">
+                  <UserPen
+                    className="edit"
+                    onClick={() => {
+                      handleProductSelectedClick(product);
+                    }}
+                  />
+                  <Trash2
+                    className="delete"
+                    onClick={() => deleteProduct(product.id)}
+                  />
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
@@ -115,9 +137,9 @@ export const Teste = () => {
         <div onClick={fecharModal} className="modal-fechar" />
         <div className="modal">
           <div className="title">
-            <p>Cadastrar Usuário</p>
+            <p>Cadastrar Produto</p>
           </div>
-          <form className="form">
+          <form onSubmit={adicionarProdutos} className="form">
             <div className="input-padrao">
               <label className="label-padrao" htmlFor="">
                 Nome do Produto
@@ -189,6 +211,14 @@ export const Teste = () => {
           </form>
         </div>
       </div>
+
+      {isOpen && productSelected && (
+        <ModalProduto
+          product={productSelected}
+          fecharModal={fecharModalUpdate}
+          setIsOpen={setIsOpen}
+        />
+      )}
     </ContainerAdminPage>
   );
 };

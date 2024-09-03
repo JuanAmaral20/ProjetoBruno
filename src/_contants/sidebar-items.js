@@ -16,9 +16,4 @@ export const sidebarItems = [
     title: "Produtos",
     link: "/produtos/admin",
   },
-  {
-    icon: LayoutGrid,
-    title: "Categorias",
-    link: "/categorias/admin",
-  },
 ];

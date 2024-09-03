@@ -9,14 +9,18 @@ export const UserTable = () => {
   const [userSelected, setUserSelected] = useState(null);
 
   const [nome, setNome] = useState(userSelected?.nome ?? "");
-  const emailRef = useState(null);
-  const cpfRef = useState(null);
-  const senhaRef = useState(null);
-  const roleRef = useState(null);
+  const [email, setEmail] = useState(userSelected?.email ?? "");
+  const [cpf, setCpf] = useState(userSelected?.cpf ?? "");
+  const [senha, setSenha] = useState(userSelected?.senha ?? "");
+  const [role, setRole] = useState(userSelected?.role ?? "");
 
   useEffect(() => {
     if (userSelected) {
       setNome(userSelected.nome);
+      setEmail(userSelected.email);
+      setCpf(userSelected.cpf);
+      setSenha(userSelected.senha);
+      setRole(userSelected.role);
     }
   }, [userSelected]);
 
@@ -35,7 +39,11 @@ export const UserTable = () => {
 
     const updatedUser = {
       ...userSelected,
-      nome, // Manter os dados existentes
+      nome,
+      email,
+      cpf,
+      senha,
+      role, // Manter os dados existentes
     };
 
     const newUsers = users.map((user) =>
@@ -88,6 +96,7 @@ export const UserTable = () => {
                   id="cpf"
                   placeholder="Digite seu CPF"
                   defaultValue={userSelected.cpf}
+                  onChange={(e) => setCpf(e.target.value)}
                 />
               </div>
               <div className="input-padrao">
@@ -101,6 +110,7 @@ export const UserTable = () => {
                   id="email"
                   placeholder="Digite seu email"
                   defaultValue={userSelected.email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="input-padrao">
@@ -114,6 +124,7 @@ export const UserTable = () => {
                   id="senha"
                   placeholder="Digite sua senha"
                   defaultValue={userSelected.senha}
+                  onChange={(e) => setSenha(e.target.value)}
                 />
               </div>
 
@@ -121,7 +132,10 @@ export const UserTable = () => {
                 <label className="label-padrao" htmlFor="role">
                   Tipo de usuário
                 </label>
-                <select defaultValue={userSelected.role}>
+                <select
+                  defaultValue={userSelected.role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
                   <option className="opt-padrao" value="ADMIN">
                     Admin
                   </option>
