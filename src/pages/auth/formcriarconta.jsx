@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import InputMask from "react-input-mask";
 
 export function FormCriarConta({
   setIsOpenNewAccount,
@@ -90,7 +91,8 @@ export function FormCriarConta({
           <label className="label-padrao" htmlFor="">
             CPF
           </label>
-          <input
+          <InputMask
+            mask={"999.999.999-99"}
             className="input-email-senha"
             type="text"
             name="nome"
@@ -105,7 +107,7 @@ export function FormCriarConta({
           </label>
           <input
             className="input-email-senha"
-            type="text"
+            type="email"
             name="nome"
             id="nome"
             placeholder="Digite seu email"
@@ -118,7 +120,7 @@ export function FormCriarConta({
           </label>
           <input
             className="input-email-senha"
-            type="text"
+            type="password"
             name="email"
             id="email"
             placeholder="Digite sua senha"

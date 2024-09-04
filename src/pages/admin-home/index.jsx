@@ -1,5 +1,5 @@
-import { ContainerAdminPage } from "../container-admin-page";
-import "../admin-home/style.css";
+import { ContainerAdminPage } from "../../components/container-admin-page";
+import "./style.css";
 import {
   User,
   LayoutGrid,
@@ -31,13 +31,13 @@ export const Admin = () => {
     <ContainerAdminPage>
       <h1 className="title-admin">Sistema de administração - Supermarket</h1>
       <div className="info-geral">
-        <a className="info" href="">
+        <a className="info" href="/usuarios/admin">
           <User className="tamanho-padrao" />
           <p className="tamanho-info">Usuários:</p>
           <p className="tamanho-info">{users.length}</p>
         </a>
 
-        <a className="info" href="">
+        <a className="info" href="/produtos/admin">
           <ShoppingBasket className="tamanho-padrao" />
           <p className="tamanho-info">Produtos:</p>
           <p className="tamanho-info">{products.length}</p>

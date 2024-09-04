@@ -1,9 +1,10 @@
 import { useContext, useRef } from "react";
-import { ContainerAdminPage } from "../container-admin-page";
+import { ContainerAdminPage } from "../../components/container-admin-page";
 import { UserContext } from "../../contexts/user-context";
-import { UserTable } from "../user-table";
+import { UserTable } from "../../components/user-table";
 import { UserPlus } from "lucide-react";
 import "./styles.css";
+import InputMask from "react-input-mask";
 
 export const UsuariosAdmin = () => {
   const { users, setUsers } = useContext(UserContext);
@@ -100,7 +101,8 @@ export const UsuariosAdmin = () => {
               <label className="label-padrao" htmlFor="">
                 CPF
               </label>
-              <input
+              <InputMask
+                mask={"999.999.999-99"}
                 className="input-email-senha"
                 type="text"
                 name="nome"
@@ -115,7 +117,7 @@ export const UsuariosAdmin = () => {
               </label>
               <input
                 className="input-email-senha"
-                type="text"
+                type="emaail"
                 name="nome"
                 id="nome"
                 placeholder="Digite seu email"
@@ -128,7 +130,7 @@ export const UsuariosAdmin = () => {
               </label>
               <input
                 className="input-email-senha"
-                type="text"
+                type="password"
                 name="email"
                 id="email"
                 placeholder="Digite sua senha"

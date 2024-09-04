@@ -1,10 +1,10 @@
-import { ContainerAdminPage } from "../container-admin-page";
+import { ContainerAdminPage } from "../../components/container-admin-page";
 import { ShoppingBasket, Trash2, UserPen } from "lucide-react";
 import { useRef, useState } from "react";
 import "./style.css";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
-import { ModalProduto } from "../modal-produtos";
+import { ModalProduto } from "../../components/modal-produtos";
 
 export const Teste = () => {
   const { products, setProducts } = useContext(UserContext);

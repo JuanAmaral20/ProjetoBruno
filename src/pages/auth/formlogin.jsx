@@ -65,7 +65,7 @@ export default function FormLogin({
           </label>
           <input
             className="input-email-senha"
-            type="text"
+            type="email"
             name="nome"
             id="nome"
             placeholder="Digite seu email"
@@ -78,7 +78,7 @@ export default function FormLogin({
           </label>
           <input
             className="input-email-senha"
-            type="text"
+            type="password"
             name="email"
             id="email"
             placeholder="Digite sua senha"

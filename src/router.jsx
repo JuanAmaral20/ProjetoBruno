@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { UsuariosAdmin } from "./components/usuario-admin";
-import { Admin } from "./components/admin-home";
-import ClientHome from "./components/client-home";
-import Login from "./components/auth/login";
-import { Teste } from "./components/teste";
+import { UsuariosAdmin } from "./pages/usuario-admin";
+import { Admin } from "./pages/admin-home";
+import ClientHome from "./pages/client-home";
+import Login from "./pages/auth/login";
+import { Teste } from "./pages/produto-admin";
 
 const router = createBrowserRouter([
   {
