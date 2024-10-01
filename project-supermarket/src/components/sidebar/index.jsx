@@ -19,7 +19,6 @@ export const SideBar = () => {
   return (
     <nav className="sidebar">
       <div className="header-sidebar">
-        <p className="user">Olá, {userLogged.nome} </p>
         <div className="navs">
           {sidebarItems.map(({ icon: MyIcon, title, link }) => (
             <button
